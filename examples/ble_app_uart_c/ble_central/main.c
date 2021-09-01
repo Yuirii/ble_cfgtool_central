@@ -62,6 +62,8 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
+#include "data_process.h"
+
 
 #define APP_BLE_CONN_CFG_TAG    1                                       /**< Tag that refers to the BLE stack configuration set with @ref sd_ble_cfg_set. The default tag is @ref BLE_CONN_CFG_TAG_DEFAULT. */
 #define APP_BLE_OBSERVER_PRIO   3                                       /**< BLE observer priority of the application. There is no need to modify this value. */
@@ -182,18 +184,12 @@ static void scan_init(void)
 
     memset(&init_scan, 0, sizeof(init_scan));
 
-    init_scan.connect_if_match = true;
-    init_scan.conn_cfg_tag     = APP_BLE_CONN_CFG_TAG;
+	init_scan.p_scan_param 		= 	&m_scan_params;
+	init_scan.p_conn_param		= 	&m_conn_params;
 
     err_code = nrf_ble_scan_init(&m_scan, &init_scan, scan_evt_handler);
     APP_ERROR_CHECK(err_code);
 
-//		uint8_t m_nus_addr[BLE_GAP_ADDR_LEN] = {0x4c, 0x2C, 0x50, 0x9d, 0xc7, 0x41}; 
-//    err_code = nrf_ble_scan_filter_set(&m_scan, SCAN_ADDR_FILTER, &m_nus_addr);
-//    APP_ERROR_CHECK(err_code);
-
-//    err_code = nrf_ble_scan_filters_enable(&m_scan, NRF_BLE_SCAN_ADDR_FILTER, false);
-//    APP_ERROR_CHECK(err_code);
 }
 
 
@@ -272,6 +268,7 @@ void uart_event_handle(app_uart_evt_t * p_event)
         /**@snippet [Handling data from UART] */
         case APP_UART_DATA_READY:
             UNUSED_VARIABLE(app_uart_get(&data_array[index]));
+			UNUSED_VARIABLE(app_uart_put(data_array[index]));
             index++;
 
             if (index == 195)

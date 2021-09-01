@@ -86,11 +86,11 @@ extern "C" {
 #define BSP_BUTTON_2   BUTTON_3
 #define BSP_BUTTON_3   BUTTON_4
 
-#define RX_PIN_NUMBER  8//8//20
-#define TX_PIN_NUMBER  6//6//18
+#define RX_PIN_NUMBER  20//8//20
+#define TX_PIN_NUMBER  18//6//18
 #define CTS_PIN_NUMBER 7
 #define RTS_PIN_NUMBER 5
-#define HWFC           true
+#define HWFC           false
 
 #define SPIS_MISO_PIN   28  // SPI MISO signal.
 #define SPIS_CSN_PIN    12  // SPI CSN signal.

@@ -5,6 +5,13 @@
 /examples/ble_central/ble_app_uart_c/pca10040/s132/arm5_no_packs/*.txt
 /examples/ble_central/ble_app_uart_c/pca10040/s132/arm5_no_packs/*.Yuule
 
+/examples/ble_app_uart_c/ble_central/pca10040/s132/arm5_no_packs/_build/
+!/examples/ble_app_uart_c/ble_central/pca10040/s132/arm5_no_packs/*.uvprojx
+!/examples/ble_app_uart_c/ble_central/pca10040/s132/arm5_no_packs/*.uvoptx
+/examples/ble_app_uart_c/ble_central/pca10040/s132/arm5_no_packs/RTE
+/examples/ble_app_uart_c/ble_central/pca10040/s132/arm5_no_packs/*.txt
+/examples/ble_app_uart_c/ble_central/pca10040/s132/arm5_no_packs/*.Yuule
+
 /examples/ble_peripheral/ble_app_uart/pca10040/s132/arm5_no_packs/_build/
 !/examples/ble_peripheral/ble_app_uart/pca10040/s132/arm5_no_packs/*.uvprojx
 !/examples/ble_peripheral/ble_app_uart/pca10040/s132/arm5_no_packs/*.uvoptx
@@ -18,3 +25,17 @@
 /examples/ble_peripheral/ble_app_uart/pca10040e/s112/arm5_no_packs/RTE
 /examples/ble_peripheral/ble_app_uart/pca10040e/s112/arm5_no_packs/*.txt
 /examples/ble_peripheral/ble_app_uart/pca10040e/s112/arm5_no_packs/*.Yuule
+
+/examples/ble_peripheral_m/ble_app_uart/pca10040e/s112/arm5_no_packs/_build/
+!/examples/ble_peripheral_m/ble_app_uart_c/pca10040e/s112/arm5_no_packs/*.uvprojx
+!/examples/ble_peripheral_m/ble_app_uart_c/pca10040e/s112/arm5_no_packs/*.uvoptx
+/examples/ble_peripheral_m/ble_app_uart/pca10040e/s112/arm5_no_packs/RTE
+/examples/ble_peripheral_m/ble_app_uart/pca10040e/s112/arm5_no_packs/*.txt
+/examples/ble_peripheral_m/ble_app_uart/pca10040e/s112/arm5_no_packs/*.Yuule
+
+/examples/ble_peripheral_s/ble_app_uart/pca10040e/s112/arm5_no_packs/_build/
+!/examples/ble_peripheral_s/ble_app_uart_c/pca10040e/s112/arm5_no_packs/*.uvprojx
+!/examples/ble_peripheral_s/ble_app_uart_c/pca10040e/s112/arm5_no_packs/*.uvoptx
+/examples/ble_peripheral_s/ble_app_uart/pca10040e/s112/arm5_no_packs/RTE
+/examples/ble_peripheral_s/ble_app_uart/pca10040e/s112/arm5_no_packs/*.txt
+/examples/ble_peripheral_s/ble_app_uart/pca10040e/s112/arm5_no_packs/*.Yuule

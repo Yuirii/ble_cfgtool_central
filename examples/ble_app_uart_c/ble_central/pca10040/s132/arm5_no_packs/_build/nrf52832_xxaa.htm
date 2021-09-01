@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\_build\nrf52832_xxaa.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\_build\nrf52832_xxaa.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Aug 10 10:19:58 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Aug 26 16:37:14 2021
 <BR><P>
 <H3>Maximum Stack Usage =        748 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -374,8 +374,8 @@ Global Symbols
 <P><STRONG><a name="[61]"></a>__aeabi_uldivmod</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, uldiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_led_indication
 </UL>
@@ -637,8 +637,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[85]"></a>app_timer_create</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, app_timer2.o(i.app_timer_create))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_button_init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_init
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_button_init
 </UL>
 
 <P><STRONG><a name="[90]"></a>app_timer_init</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, app_timer2.o(i.app_timer_init))
@@ -676,8 +676,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 236<LI>Call Chain = app_uart_get &rArr; app_error_handler_bare &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_0 &rArr; std_n &rArr; nrf_log_frontend_dequeue &rArr;  nrf_log_frontend_std_0 (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_handler_bare
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_get
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_rx
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_event_handle
 </UL>
@@ -686,8 +686,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = app_uart_init &rArr; nrf_drv_uart_init &rArr; nrfx_uarte_init &rArr; apply_config &rArr; nrf_gpio_cfg_output &rArr; nrf_gpio_cfg
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_init
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_init
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_rx
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_init
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -696,13 +696,14 @@ Global Symbols
 <P><STRONG><a name="[9f]"></a>app_uart_put</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, app_uart_fifo.o(i.app_uart_put))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = app_uart_put &rArr; nrf_drv_uart_tx &rArr; nrfx_uart_tx &rArr; tx_byte &rArr; nrf_uart_event_clear
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_put
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_get
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_tx_in_progress
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_tx_in_progress
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_tx_in_progress
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_tx
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_put
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_nus_chars_received_uart_print
+<BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_event_handle
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_nus_chars_received_uart_print
 <LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
@@ -712,12 +713,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sdh_enable_request
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_pwr_mgmt_run
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_frontend_dequeue
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sd_state_evt_handler
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_queue_push
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_queue_generic_pop
-<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_clock_lfclk_release
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sd_state_evt_handler
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evt_handle
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_balloc_free
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_balloc_alloc
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buf_prealloc
@@ -727,12 +728,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sdh_enable_request
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_pwr_mgmt_run
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_frontend_dequeue
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sd_state_evt_handler
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_queue_push
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_queue_generic_pop
-<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_clock_lfclk_release
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sd_state_evt_handler
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evt_handle
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_balloc_free
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_balloc_alloc
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buf_prealloc
@@ -844,9 +845,9 @@ Global Symbols
 <P><STRONG><a name="[c0]"></a>bsp_board_led_off</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, boards.o(i.bsp_board_led_off))
 <BR><BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_off
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_led_indication
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_led_indication
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_leds_off
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_off
 </UL>
 
 <P><STRONG><a name="[c2]"></a>bsp_board_led_on</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, boards.o(i.bsp_board_led_on))
@@ -865,8 +866,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_led_off
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_off
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_init
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_init
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_off
 </UL>
 
 <P><STRONG><a name="[c3]"></a>bsp_board_leds_on</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, boards.o(i.bsp_board_leds_on))
@@ -917,9 +918,9 @@ Global Symbols
 <P><STRONG><a name="[7d]"></a>bsp_event_to_button_action_assign</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, bsp.o(i.bsp_event_to_button_action_assign))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = bsp_event_to_button_action_assign
 </UL>
-<BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_evt_handler
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_init
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_evt_handler
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;advertising_buttons_configure
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_init
 </UL>
 
 <P><STRONG><a name="[b1]"></a>bsp_indication_set</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, bsp.o(i.bsp_indication_set))
@@ -935,11 +936,11 @@ Global Symbols
 <P><STRONG><a name="[cc]"></a>bsp_init</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, bsp.o(i.bsp_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = bsp_init &rArr; app_button_init &rArr; nrfx_gpiote_in_init &rArr; channel_port_alloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_create
+<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_init
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_create
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_button_init
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_button_enable
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_event_to_button_action_assign
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -977,8 +978,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8f]"></a>drv_rtc_counter_get</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, drv_rtc.o(i.drv_rtc_counter_get))
-<BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_now
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_cnt_get
+<BR><BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_cnt_get
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_now
 </UL>
 
 <P><STRONG><a name="[92]"></a>drv_rtc_init</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, drv_rtc.o(i.drv_rtc_init))
@@ -1067,7 +1068,7 @@ Global Symbols
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_ble_scan_on_adv_report
 </UL>
 
-<P><STRONG><a name="[2f]"></a>main</STRONG> (Thumb, 282 bytes, Stack size 40 bytes, main.o(i.main))
+<P><STRONG><a name="[2f]"></a>main</STRONG> (Thumb, 278 bytes, Stack size 40 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 292<LI>Call Chain = main &rArr; nrf_sdh_enable_request &rArr; softdevices_evt_irq_enable &rArr; app_error_handler_bare &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_0 &rArr; std_n &rArr; nrf_log_frontend_dequeue &rArr;  nrf_log_frontend_std_0 (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sdh_enable_request
@@ -1153,8 +1154,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__asm___12_nrf_atomic_c_85ca2469__nrf_atomic_internal_add
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buf_prealloc
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_memobj_get
+<BR>[Called By]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_memobj_get
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buf_prealloc
 </UL>
 
 <P><STRONG><a name="[10d]"></a>nrf_atomic_u32_fetch_and</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, nrf_atomic.o(i.nrf_atomic_u32_fetch_and))
@@ -1342,10 +1343,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_fprintf_fmt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prefix_process
-<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;postfix_process
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_std_entry_process
+<BR>[Called By]<UL><LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_std_entry_process
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_hexdump_entry_process
+<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prefix_process
+<LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;postfix_process
 </UL>
 
 <P><STRONG><a name="[d6]"></a>nrf_fprintf_buffer_flush</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, nrf_fprintf.o(i.nrf_fprintf_buffer_flush))
@@ -1402,8 +1403,8 @@ Global Symbols
 <P><STRONG><a name="[fb]"></a>nrf_log_default_backends_init</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, nrf_log_default_backends.o(i.nrf_log_default_backends_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = nrf_log_default_backends_init &rArr; nrf_log_backend_add
 </UL>
-<BR>[Calls]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_backend_add
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_backend_rtt_init
+<BR>[Calls]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_backend_rtt_init
+<LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_backend_add
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1417,15 +1418,15 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_memobj_alloc
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_util_critical_region_exit
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_util_critical_region_enter
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buffer_is_empty
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invalid_packets_omit
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_memobj_put
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_memobj_get
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buffer_is_empty
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invalid_packets_omit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_fault_handler
-<LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;std_n
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shutdown_process
+<LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;std_n
 </UL>
 
 <P><STRONG><a name="[88]"></a>nrf_log_frontend_std_0</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, nrf_log_frontend.o(i.nrf_log_frontend_std_0))
@@ -1636,8 +1637,8 @@ Global Symbols
 <P><STRONG><a name="[ca]"></a>nrf_pwr_mgmt_shutdown</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, nrf_pwr_mgmt.o(i.nrf_pwr_mgmt_shutdown))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = nrf_pwr_mgmt_shutdown &rArr; shutdown_process &rArr; nrf_log_frontend_dequeue &rArr;  nrf_log_frontend_std_0 (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_atomic_u32_fetch_store
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shutdown_process
+<BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shutdown_process
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_atomic_u32_fetch_store
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_event_handler
 </UL>
@@ -1796,8 +1797,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[12d]"></a>nrfx_clock_enable</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, nrfx_clock.o(i.nrfx_clock_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sd_state_evt_handler
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_clock_init
+<BR><BR>[Called By]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_clock_init
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sd_state_evt_handler
 </UL>
 
 <P><STRONG><a name="[12b]"></a>nrfx_clock_init</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, nrfx_clock.o(i.nrfx_clock_init))
@@ -1851,9 +1852,9 @@ Global Symbols
 <P><STRONG><a name="[15e]"></a>nrfx_prs_acquire</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, nrfx_prs.o(i.nrfx_prs_acquire))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = nrfx_prs_acquire &rArr; app_util_critical_region_enter
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prs_box_get
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_util_critical_region_exit
+<BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_util_critical_region_exit
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_util_critical_region_enter
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prs_box_get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_init
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_init
@@ -1869,9 +1870,9 @@ Global Symbols
 <P><STRONG><a name="[131]"></a>nrfx_uart_init</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, nrfx_uart.o(i.nrfx_uart_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = nrfx_uart_init &rArr; apply_config &rArr; nrf_gpio_cfg_output &rArr; nrf_gpio_cfg
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
-<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_uart_event_clear
+<BR>[Calls]<UL><LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_uart_event_clear
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_config
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_init
 </UL>
@@ -1913,9 +1914,9 @@ Global Symbols
 <P><STRONG><a name="[130]"></a>nrfx_uarte_init</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, nrfx_uarte.o(i.nrfx_uarte_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = nrfx_uarte_init &rArr; apply_config &rArr; nrf_gpio_cfg_output &rArr; nrf_gpio_cfg
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;interrupts_enable
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;interrupts_enable
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;apply_config
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_prs_acquire
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_init
 </UL>
@@ -1946,11 +1947,12 @@ Global Symbols
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_tx
 </UL>
 
-<P><STRONG><a name="[3d]"></a>uart_event_handle</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, main.o(i.uart_event_handle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 428<LI>Call Chain = uart_event_handle &rArr; ble_nus_c_string_send &rArr; nrf_ble_gq_item_add &rArr; queue_process &rArr; request_err_code_handle &rArr; nrf_log_frontend_std_3 &rArr; std_n &rArr; nrf_log_frontend_dequeue &rArr;  nrf_log_frontend_std_0 (Cycle)
+<P><STRONG><a name="[3d]"></a>uart_event_handle</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, main.o(i.uart_event_handle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 436<LI>Call Chain = uart_event_handle &rArr; ble_nus_c_string_send &rArr; nrf_ble_gq_item_add &rArr; queue_process &rArr; request_err_code_handle &rArr; nrf_log_frontend_std_3 &rArr; std_n &rArr; nrf_log_frontend_dequeue &rArr;  nrf_log_frontend_std_0 (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_frontend_std_0
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_nus_c_string_send
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_put
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_get
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_error_handler_bare
 </UL>
@@ -2058,9 +2060,9 @@ Local Symbols
 <P><STRONG><a name="[48]"></a>bsp_button_event_handler</STRONG> (Thumb, 132 bytes, Stack size 32 bytes, bsp.o(i.bsp_button_event_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = bsp_button_event_handler &rArr; app_timer_start &rArr; timer_req_schedule &rArr; nrf_atfifo_item_alloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_stop
+<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_pin_to_button_idx
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_stop
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_start
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_pin_to_button_idx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_timer_handler
 </UL>
@@ -2069,18 +2071,18 @@ Local Symbols
 <P><STRONG><a name="[cb]"></a>bsp_led_indication</STRONG> (Thumb, 446 bytes, Stack size 40 bytes, bsp.o(i.bsp_led_indication))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = bsp_led_indication &rArr; app_timer_start &rArr; timer_req_schedule &rArr; nrf_atfifo_item_alloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_stop
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_start
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_off
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_leds_on
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_leds_on
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_led_state_get
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_led_on
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_led_off
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_board_led_invert
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_stop
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_start
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_off
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_timer_handler
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_indication_set
+<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_indication_set
+<LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leds_timer_handler
 </UL>
 
 <P><STRONG><a name="[38]"></a>button_timer_handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, bsp.o(i.button_timer_handler))
@@ -2119,8 +2121,8 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_event_to_button_action_assign
 </UL>
-<BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_evt_handler
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_btn_ble_init
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_btn_ble_init
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_evt_handler
 </UL>
 
 <P><STRONG><a name="[56]"></a>ble_evt_handler</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, bsp_btn_ble.o(i.ble_evt_handler))
@@ -2385,8 +2387,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_frontend_std_6
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_frontend_std_1
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_frontend_std_0
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;is_whitelist_used
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_ble_scan_connect_with_target
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;is_whitelist_used
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
@@ -2715,18 +2717,18 @@ Local Symbols
 <P><STRONG><a name="[34]"></a>detection_delay_timeout_handler</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, app_button.o(i.detection_delay_timeout_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = detection_delay_timeout_handler &rArr; evt_handle &rArr; usr_event &rArr; button_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_gpiote_in_is_set
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evt_handle
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evt_handle
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_gpiote_in_is_set
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_button.o(i.app_button_init)
 </UL>
 <P><STRONG><a name="[33]"></a>gpiote_event_handler</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, app_button.o(i.gpiote_event_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = gpiote_event_handler &rArr; timer_start &rArr; app_timer_start &rArr; timer_req_schedule &rArr; nrf_atfifo_item_alloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_gpiote_in_is_set
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_get
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_gpiote_in_is_set
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_button.o(i.app_button_init)
 </UL>
@@ -2778,23 +2780,23 @@ Local Symbols
 <P><STRONG><a name="[35]"></a>rtc_irq</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, app_timer2.o(i.rtc_irq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = rtc_irq &rArr; rtc_update &rArr; rtc_schedule &rArr; drv_rtc_windowed_compare_set &rArr; nrf_rtc_event_clear
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_req_process
+<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_overflow_pending
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_compare_pending
+<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_req_process
 <LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_expire
 <LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_update
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_now
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_overflow_pending
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_compare_pending
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_timer2.o(i.app_timer_init)
 </UL>
 <P><STRONG><a name="[16f]"></a>rtc_schedule</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, app_timer2.o(i.rtc_schedule))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = rtc_schedule &rArr; drv_rtc_windowed_compare_set &rArr; nrf_rtc_event_clear
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_expire
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_now
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_windowed_compare_set
+<BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_windowed_compare_set
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_compare_disable
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_cnt_get
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_expire
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_now
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_update
 </UL>
@@ -2802,12 +2804,12 @@ Local Symbols
 <P><STRONG><a name="[16e]"></a>rtc_update</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, app_timer2.o(i.rtc_update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = rtc_update &rArr; rtc_schedule &rArr; drv_rtc_windowed_compare_set &rArr; nrf_rtc_event_clear
 </UL>
-<BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sortlist_pop
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_schedule
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_peek
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_peek
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_add
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_stop
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_rtc_start
+<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sortlist_pop
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_schedule
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_irq
 </UL>
@@ -2822,8 +2824,8 @@ Local Symbols
 <P><STRONG><a name="[16c]"></a>timer_expire</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, app_timer2.o(i.timer_expire))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = timer_expire &rArr; nrf_sortlist_add
 </UL>
-<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_now
-<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_add
+<BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_add
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_now
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_schedule
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_irq
@@ -2832,11 +2834,11 @@ Local Symbols
 <P><STRONG><a name="[16d]"></a>timer_req_process</STRONG> (Thumb, 110 bytes, Stack size 24 bytes, app_timer2.o(i.timer_req_process))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = timer_req_process &rArr; nrf_sortlist_add
 </UL>
-<BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sortlist_pop
-<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_remove
+<BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_remove
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_sortlist_add
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_atfifo_item_get
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_atfifo_item_free
+<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sortlist_pop
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rtc_irq
 </UL>
@@ -2876,10 +2878,10 @@ Local Symbols
 <P><STRONG><a name="[36]"></a>uart_event_handler</STRONG> (Thumb, 156 bytes, Stack size 24 bytes, app_uart_fifo.o(i.uart_event_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = uart_event_handler &rArr; nrf_drv_uart_tx &rArr; nrfx_uart_tx &rArr; tx_byte &rArr; nrf_uart_event_clear
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_put
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_get
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_tx
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_tx
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_rx
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_put
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_fifo_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_uart_fifo.o(i.app_uart_init)
 </UL>
