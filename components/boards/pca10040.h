@@ -86,8 +86,8 @@ extern "C" {
 #define BSP_BUTTON_2   BUTTON_3
 #define BSP_BUTTON_3   BUTTON_4
 
-#define RX_PIN_NUMBER  20//8//20
-#define TX_PIN_NUMBER  18//6//18
+#define RX_PIN_NUMBER  27//8//20//27
+#define TX_PIN_NUMBER  28//6//18//28
 #define CTS_PIN_NUMBER 7
 #define RTS_PIN_NUMBER 5
 #define HWFC           false

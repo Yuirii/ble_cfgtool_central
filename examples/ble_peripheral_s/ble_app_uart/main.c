@@ -87,9 +87,9 @@
 
 #define APP_BLE_OBSERVER_PRIO           3                                           /**< Application's BLE observer priority. You shouldn't need to modify this value. */
 
-#define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms. This value corresponds to 40 ms). */
+#define APP_ADV_INTERVAL                80                                          /**< The advertising interval (in units of 0.625 ms. This value corresponds to 40 ms). */
 
-#define APP_ADV_DURATION                18000                                       /**< The advertising duration (180 seconds) in units of 10 milliseconds. */
+#define APP_ADV_DURATION                0                                       /**< The advertising duration (180 seconds) in units of 10 milliseconds. */
 
 #define MIN_CONN_INTERVAL               MSEC_TO_UNITS(20, UNIT_1_25_MS)             /**< Minimum acceptable connection interval (20 ms), Connection interval uses 1.25 ms units. */
 #define MAX_CONN_INTERVAL               MSEC_TO_UNITS(75, UNIT_1_25_MS)             /**< Maximum acceptable connection interval (75 ms), Connection interval uses 1.25 ms units. */
@@ -104,8 +104,9 @@
 #define UART_TX_BUF_SIZE                256                                         /**< UART TX buffer size. */
 #define UART_RX_BUF_SIZE                256                                         /**< UART RX buffer size. */
 
-#define APP_BEACON_INFO_LENGTH          0x17                                        /**< Total length of information advertised by the Beacon. */
-#define APP_ADV_DATA_LENGTH             0x15                                        /**< Length of manufacturer specific data in the advertisement. */
+#define APP_SPECIFIC_COMM_FLAG			0x01
+#define APP_BEACON_INFO_LENGTH          0x18                                        /**< Total length of information advertised by the Beacon. */
+#define APP_ADV_DATA_LENGTH             0x16                                        /**< Length of manufacturer specific data in the advertisement. */
 #define APP_DEVICE_TYPE                 0x02                                        /**< 0x02 refers to Beacon. */
 #define APP_MEASURED_RSSI               0xB5                                        /**< The Beacon's measured RSSI at 1 meter distance in dBm. */
 #define APP_COMPANY_IDENTIFIER          0x004C                                      /**< Company identifier for APPLE. as per www.bluetooth.org. */
@@ -135,7 +136,8 @@ static uint8_t m_beacon_info[] =                    /**< Information advertised 
     APP_BEACON_UUID,   
     APP_MAJOR_VALUE, 
     APP_MINOR_VALUE, 
-    APP_MEASURED_RSSI 
+    APP_MEASURED_RSSI,
+	APP_SPECIFIC_COMM_FLAG
 };
 
 
@@ -392,6 +394,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
     {
         case BLE_GAP_EVT_CONNECTED:
             NRF_LOG_INFO("Connected");
+			printf("BLE_GAP_EVT_CONNECTED");
             err_code = bsp_indication_set(BSP_INDICATE_CONNECTED);
             APP_ERROR_CHECK(err_code);
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
@@ -401,6 +404,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
 
         case BLE_GAP_EVT_DISCONNECTED:
             NRF_LOG_INFO("Disconnected");
+			printf("BLE_GAP_EVT_DISCONNECTED");
             // LED indication will be changed when advertising starts.
             m_conn_handle = BLE_CONN_HANDLE_INVALID;
             break;
@@ -408,6 +412,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
         case BLE_GAP_EVT_PHY_UPDATE_REQUEST:
         {
             NRF_LOG_DEBUG("PHY update request.");
+			NRF_LOG_INFO("BLE_GAP_EVT_PHY_UPDATE_REQUEST");
             ble_gap_phys_t const phys =
             {
                 .rx_phys = BLE_GAP_PHY_AUTO,
@@ -419,29 +424,26 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
 
         case BLE_GAP_EVT_SEC_PARAMS_REQUEST:
             // Pairing not supported
+			printf("BLE_GATTS_EVT_SYS_ATTR_MISSING");
             err_code = sd_ble_gap_sec_params_reply(m_conn_handle, BLE_GAP_SEC_STATUS_PAIRING_NOT_SUPP, NULL, NULL);
             APP_ERROR_CHECK(err_code);
             break;
 
         case BLE_GATTS_EVT_SYS_ATTR_MISSING:
             // No system attributes have been stored.
+			printf("BLE_GATTS_EVT_SYS_ATTR_MISSING");
             err_code = sd_ble_gatts_sys_attr_set(m_conn_handle, NULL, 0, 0);
             APP_ERROR_CHECK(err_code);
             break;
 
         case BLE_GATTC_EVT_TIMEOUT:
             // Disconnect on GATT Client timeout event.
+			printf("BLE_GATTC_EVT_TIMEOUT");
             err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gattc_evt.conn_handle,
                                              BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
             APP_ERROR_CHECK(err_code);
             break;
 
-        case BLE_GATTS_EVT_TIMEOUT:
-            // Disconnect on GATT Server timeout event.
-            err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gatts_evt.conn_handle,
-                                             BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
-            APP_ERROR_CHECK(err_code);
-            break;
 
         default:
             // No implementation needed.
@@ -647,11 +649,22 @@ static void advertising_init(void)
     manuf_specific_data.data.p_data         = m_beacon_info;
     manuf_specific_data.data.size           = APP_BEACON_INFO_LENGTH;
 
+	init.advdata.name_type          		= BLE_ADVDATA_NO_NAME;
+	init.advdata.include_appearance 		= false;
     init.advdata.flags              		= BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE;
 	init.advdata.p_manuf_specific_data      = &manuf_specific_data;
 
-
-
+    //response
+//    m_srvc_data.service_uuid        = uuid_res;  
+//    m_srvc_data.data.p_data         = m_srvc_info;
+//    m_srvc_data.data.size           = sizeof(m_srvc_info);
+//    
+//    init.srdata.p_service_data_array   = &m_srvc_data;
+//    init.srdata.service_data_count     		= 0x01;
+//    init.srdata.name_type              		= BLE_ADVDATA_FULL_NAME;
+//    init.srdata.uuids_complete.uuid_cnt 	= sizeof(m_adv_uuids) / sizeof(m_adv_uuids[0]);
+//    init.srdata.uuids_complete.p_uuids  	= m_adv_uuids;
+	
     init.config.ble_adv_fast_enabled  = true;
     init.config.ble_adv_fast_interval = APP_ADV_INTERVAL;
     init.config.ble_adv_fast_timeout  = APP_ADV_DURATION;

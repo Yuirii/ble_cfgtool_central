@@ -63,6 +63,7 @@
 #include "nrf_log_default_backends.h"
 
 #include "data_process.h"
+#include "nrf_delay.h"
 
 
 #define APP_BLE_CONN_CFG_TAG    1                                       /**< Tag that refers to the BLE stack configuration set with @ref sd_ble_cfg_set. The default tag is @ref BLE_CONN_CFG_TAG_DEFAULT. */
@@ -136,12 +137,50 @@ static void scan_start(void)
 
 /**@brief Function for handling Scanning Module events.
  */
+uint8_t len_uuid_s[17] 	= {	0x16, \
+							0xFD, 0xA5, 0x06, 0x93, \
+							0xA4, 0xE2, 0x4F, 0xB1, \
+							0xAF, 0xCF, 0xC6, 0xEB, \
+							0x07, 0x64, 0x78, 0x25};
+uint8_t conn_c_f = 0x00; 									/* Need to be stored in flash. */
 static void scan_evt_handler(scan_evt_t const * p_scan_evt)
 {
     ret_code_t err_code;
-
+	uint8_t conn_f 		= 0;
+	ble_gap_addr_t 		addr_p;
+	memset(&addr_p, 0, sizeof(ble_gap_addr_t));
+	
     switch(p_scan_evt->scan_evt_id)
     {
+		case NRF_BLE_SCAN_EVT_NOT_FOUND:
+		{
+			//&p_scan_evt->params.p_not_found->data.p_data[1]
+			if(memcmp(&p_scan_evt->params.p_not_found->data.p_data[8], len_uuid_s, 17)==0)
+			{
+				memcpy(&addr_p, &p_scan_evt->params.p_not_found->peer_addr, sizeof(ble_gap_addr_t));
+				conn_f = (p_scan_evt->params.p_not_found->data.p_data[30]) & 0x03;
+				 NRF_LOG_INFO("Match.");
+				 NRF_LOG_INFO("Find %02x%02x%02x%02x%02x%02x",
+					  addr_p.addr[0],
+					  addr_p.addr[1],
+					  addr_p.addr[2],
+					  addr_p.addr[3],
+					  addr_p.addr[4],
+					  addr_p.addr[5]
+					  );
+				if(conn_f != conn_c_f)
+				{
+					nrf_ble_scan_stop();
+					err_code = sd_ble_gap_connect(&addr_p,&m_scan_params,&m_conn_params,APP_BLE_CONN_CFG_TAG);
+					APP_ERROR_CHECK(err_code);
+					NRF_LOG_INFO("Connection.");
+				}else{
+					
+				}
+
+			}
+		} break;
+			
          case NRF_BLE_SCAN_EVT_CONNECTING_ERROR:
          {
               err_code = p_scan_evt->params.connecting_err.err_code;
@@ -165,7 +204,7 @@ static void scan_evt_handler(scan_evt_t const * p_scan_evt)
 
          case NRF_BLE_SCAN_EVT_SCAN_TIMEOUT:
          {
-             NRF_LOG_INFO("Scan timed out.");
+//             NRF_LOG_INFO("Scan timed out.");
              scan_start();
          } break;
 
@@ -262,16 +301,19 @@ void uart_event_handle(app_uart_evt_t * p_event)
     static uint8_t data_array[BLE_NUS_MAX_DATA_LEN];
     static uint16_t index = 0;
     uint32_t ret_val;
-
+	NRF_LOG_INFO("evt_type:%d", p_event->evt_type);
     switch (p_event->evt_type)
     {
         /**@snippet [Handling data from UART] */
         case APP_UART_DATA_READY:
             UNUSED_VARIABLE(app_uart_get(&data_array[index]));
-			UNUSED_VARIABLE(app_uart_put(data_array[index]));
+//			NRF_LOG_INFO("%d", data_array[index]);
+//			UNUSED_VARIABLE(app_uart_put(data_array[index]));
             index++;
 
-            if (index == 195)
+            if (((data_array[index - 1] == '\n') ||
+                (data_array[index - 1] == '\r') ||
+                (index >= (m_ble_nus_max_data_len))) && index > 1)
             {
                 NRF_LOG_DEBUG("Ready to send data over BLE NUS");
                 NRF_LOG_HEXDUMP_DEBUG(data_array, index);
@@ -286,9 +328,21 @@ void uart_event_handle(app_uart_evt_t * p_event)
                 } while (ret_val == NRF_ERROR_RESOURCES);
 
                 index = 0;
-            }
+            }else if(((data_array[index - 1] == '\n') ||
+                (data_array[index - 1] == '\r') ||
+                (index >= (m_ble_nus_max_data_len))) && index <= 1)
+			{
+				index = 0;
+			}
             break;
-
+			
+		case APP_UART_TX_EMPTY:
+			NRF_LOG_INFO("APP_UART_TX_EMPTY");
+			break;
+		
+		case APP_UART_DATA:
+			NRF_LOG_INFO("APP_UART_DATA");
+			break;
         /**@snippet [Handling data from UART] */
         case APP_UART_COMMUNICATION_ERROR:
             NRF_LOG_ERROR("Communication error occurred while handling UART.");
@@ -301,6 +355,7 @@ void uart_event_handle(app_uart_evt_t * p_event)
             break;
 
         default:
+			NRF_LOG_INFO("default");
             break;
     }
 }
@@ -337,6 +392,7 @@ static void ble_nus_c_evt_handler(ble_nus_c_t * p_ble_nus_c, ble_nus_c_evt_t con
 
         case BLE_NUS_C_EVT_DISCONNECTED:
             NRF_LOG_INFO("Disconnected.");
+			nrf_delay_ms(200);
             scan_start();
             break;
     }
